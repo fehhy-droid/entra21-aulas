@@ -184,7 +184,7 @@ public class teste {
                 }
             }
 
-            for (String[] missao : missoes) {
+            for (String[] missao : missoes)   {
                 if (missao[0].equals(idMissao)) {
                     missao[5] = nomeNave;
                     System.out.println("Nave " + nomeNave + " associada à missão ID " + idMissao);
