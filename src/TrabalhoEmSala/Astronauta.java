@@ -1,16 +1,17 @@
 package TrabalhoEmSala;
 
-public class Astronauta {
-    private String nomeAstronauta;
+public class Astronauta extends Identidade {
+    private String nome;
     private String especialidadeAstronauta;
 
     public Astronauta(String nomeAstronauta, String especialidadeAstronauta) {
-        this.nomeAstronauta = nomeAstronauta;
+        super.setId(gerarId());
+        super.setNome(nomeAstronauta);
         this.especialidadeAstronauta = especialidadeAstronauta;
     }
 
-    public String getNomeAstronauta() {
-        return nomeAstronauta;
+    public String getNome() {
+        return nome;
     }
 
     public String getEspecialidadeAstronauta() {

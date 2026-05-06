@@ -1,17 +1,23 @@
 package TrabalhoEmSala;
 
+import TrabalhoEmSala.Gerenciadores.GerenciadorAstronauta;
+import TrabalhoEmSala.Gerenciadores.GerenciadorMissoes;
+import TrabalhoEmSala.Gerenciadores.GerenciadorNave;
+
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Astronauta astronauta = new Astronauta("Neil Armstrong", "Comandante");
-        NaveEspacial nave = new NaveEspacial("Discovery One", "Exploração", "5");
-        Missao missao = new Missao("Marte", "Explorar a superficie de marte", "2025-01-15", "Planejada");
-        Missao missao2 = new Missao("Marte", "Explorar a superficie de marte", "2025-01-15", "Planejada");
-        Astronauta astronauta1 = new Astronauta("Buzz Aldrin", "Piloto");
+        GerenciadorMissoes gerenciadorMissoes = new GerenciadorMissoes();
+        GerenciadorNave gerenciadorNave = new GerenciadorNave();
+        GerenciadorAstronauta gerenciadorAstronauta = new GerenciadorAstronauta();
 
-        System.out.println(missao.getId());
-        System.out.println(missao2.getId());
+        //
+//        Astronauta astronauta = new Astronauta("Neil Armstrong", "Comandante");
+//        NaveEspacial nave = new NaveEspacial("Discovery One", "Exploração", "5");
+//        Missao missao = new Missao("Marte", "Explorar a superficie de marte", "2025-01-15", "Planejada");
+//        Missao missao2 = new Missao("Marte", "Explorar a superficie de marte", "2025-01-15", "Planejada");
+//        Astronauta astronauta1 = new Astronauta("Buzz Aldrin", "Piloto");
 
         int opcao;
         Scanner scanner = new Scanner(System.in);
@@ -39,6 +45,8 @@ public class Main {
 
             switch (opcao){
                 case 1:
+
+
                     System.out.print("Nome da Missão: ");
                     String nomeMissao = scanner.nextLine();
                     System.out.print("Objetivo da Missão: ");
@@ -47,12 +55,53 @@ public class Main {
                     String dataLancamento = scanner.nextLine();
                     System.out.print("Status (Planejada, Em Andamento, Concluída, Cancelada): ");
                     String statusMissao = scanner.nextLine();
-                   // (nomeMissao, objetivoMissao, dataLancamento, statusMissao);
+                    gerenciadorMissoes.adicionarMissao(nomeMissao, objetivoMissao, dataLancamento, statusMissao);
+                    break;
+
+                case 2:
+
+                    System.out.print("Nome da Nave: ");
+                    String nomeNave = scanner.nextLine();
+                    System.out.print("Tipo da Nave: ");
+                    String tipoNave = scanner.nextLine();
+                    System.out.print("Capacidade da Nave: ");
+                    String capacidadeNave = scanner.nextLine();
+                    gerenciadorNave.adicionarNave(nomeNave, tipoNave, capacidadeNave);
+                    break;
+
+                case 3:
+
+                    System.out.print("Nome do Astronauta: ");
+                    String nomeAstronauta = scanner.nextLine();
+                    System.out.print("Especialidade do Astronauta: ");
+                    String especialidadeAstronauta = scanner.nextLine();
+                    gerenciadorAstronauta.adicionarAstronauta(nomeAstronauta, especialidadeAstronauta);
+                    break;
+
+                case 4:
+                    gerenciadorMissoes.listarMissoes();
+
+                    break;
+
+                case 5:
+                    gerenciadorNave.listarNaves();
+
+                    break;
+
+                case 6:
+                    gerenciadorAstronauta.listarAstronauta();
+
+                    break;
+
+                case 7:
+                    System.out.print("ID da Missão para associar nave: ");
+                    int idMissaoAssocNave = scanner.nextInt();
+                    System.out.print("ID da Nave para associar: ");
+                    int idNaveAssoc = scanner.nextInt();
+                    gerenciadorMissoes.associarNaveAMissao(idMissaoAssocNave, idNaveAssoc);
                     break;
             }
         }while(opcao!=0);
-
-
 
     }
 }

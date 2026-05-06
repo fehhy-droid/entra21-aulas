@@ -17,7 +17,6 @@ public class Missao extends Identidade {
         this.status = status;
     }
 
-
     public NaveEspacial getNave() {
         return nave;
     }
