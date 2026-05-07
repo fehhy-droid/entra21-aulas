@@ -4,18 +4,23 @@ public class Missao extends Identidade {
 
     private String objetivo;
     private String dataLancamento;
-    private String status;
+    private StatusMissao status;
     private NaveEspacial nave;
     private Astronauta astronauta;
+    private static int proximoId = 1;
 
 
-    public Missao(String nome, String objetivo, String dataLancamento, String status) {
+    public Missao(String nome, String objetivo, String dataLancamento, StatusMissao status) {
         super.setId(gerarId());
         super.setNome(nome);
         this.objetivo = objetivo;
         this.dataLancamento = dataLancamento;
         this.status = status;
     }
+    protected static int gerarId() {
+        return proximoId++;
+    }
+
 
     public NaveEspacial getNave() {
         return nave;
@@ -33,12 +38,20 @@ public class Missao extends Identidade {
         this.astronauta = astronauta;
     }
 
-    public String getStatus() {
+    public StatusMissao getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(StatusMissao status) {
         this.status = status;
+    }
+
+    public static int getProximoId() {
+        return proximoId;
+    }
+
+    public static void setProximoId(int proximoId) {
+        Missao.proximoId = proximoId;
     }
 
     public String getDataLancamento() {

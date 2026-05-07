@@ -6,6 +6,7 @@ public class NaveEspacial extends Identidade {
     private String tipo;
     private String capacidade;
     private List<Astronauta> astronautas;
+    private static int proximoId = 1;
 
 
     public NaveEspacial(String nome, String tipo, String capacidade) {
@@ -14,6 +15,9 @@ public class NaveEspacial extends Identidade {
         this.tipo = tipo;
         this.capacidade = capacidade;
 
+    }
+    protected static int gerarId() {
+        return proximoId++;
     }
 
     public String getTipo() {

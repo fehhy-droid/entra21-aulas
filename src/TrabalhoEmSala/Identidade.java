@@ -1,14 +1,11 @@
 package TrabalhoEmSala;
 
 public class Identidade {
-    private static int proximoId = 0;
 
     private int id;
     private String nome;
 
-    protected static int gerarId() {
-        return proximoId++;
-    }
+
 
     public int getId() {
         return id;

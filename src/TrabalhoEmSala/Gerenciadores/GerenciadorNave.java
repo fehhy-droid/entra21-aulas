@@ -14,8 +14,6 @@ public class GerenciadorNave {
         NaveEspacial nave = new NaveEspacial(nome, tipo, capacidade);
         naves.add(nave);
         System.out.println("Nave adicionada!");
-
-
     }
 
     public void listarNaves(){
@@ -45,6 +43,7 @@ public class GerenciadorNave {
     }
     public NaveEspacial buscarPorId(int id) {
         for (NaveEspacial nave : naves) {
+            System.out.println("ID da nave" + nave.getId());
             if (nave.getId() == id) {
                 return nave;
             }

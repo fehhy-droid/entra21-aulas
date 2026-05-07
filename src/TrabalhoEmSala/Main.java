@@ -8,19 +8,20 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        GerenciadorMissoes gerenciadorMissoes = new GerenciadorMissoes();
         GerenciadorNave gerenciadorNave = new GerenciadorNave();
         GerenciadorAstronauta gerenciadorAstronauta = new GerenciadorAstronauta();
+        GerenciadorMissoes gerenciadorMissoes = new GerenciadorMissoes(gerenciadorNave, gerenciadorAstronauta);
 
-        //
-//        Astronauta astronauta = new Astronauta("Neil Armstrong", "Comandante");
-//        NaveEspacial nave = new NaveEspacial("Discovery One", "Exploração", "5");
-//        Missao missao = new Missao("Marte", "Explorar a superficie de marte", "2025-01-15", "Planejada");
-//        Missao missao2 = new Missao("Marte", "Explorar a superficie de marte", "2025-01-15", "Planejada");
-//        Astronauta astronauta1 = new Astronauta("Buzz Aldrin", "Piloto");
 
         int opcao;
         Scanner scanner = new Scanner(System.in);
+
+        gerenciadorAstronauta.adicionarAstronauta("Fernanda", "voar");
+        gerenciadorAstronauta.adicionarAstronauta("Fernanda", "voar");
+        gerenciadorMissoes.adicionarMissao("Terra", "Ir para terra", "06/05", StatusMissao.CANCELADA);
+        gerenciadorMissoes.adicionarMissao("Terra", "Ir para terra", "06/05", StatusMissao.CONCLUIDA);
+        gerenciadorNave.adicionarNave("Stefanie", "grande", "8 pessoas");
+        gerenciadorNave.adicionarNave("Stefanie", "grande", "8 pessoas");
 
         do {
             System.out.println("\n--- Sistema de Gerenciamento de Exploração Espacial ---");
@@ -54,7 +55,8 @@ public class Main {
                     System.out.print("Data de Lançamento (AAAA-MM-DD): ");
                     String dataLancamento = scanner.nextLine();
                     System.out.print("Status (Planejada, Em Andamento, Concluída, Cancelada): ");
-                    String statusMissao = scanner.nextLine();
+                    String status= scanner.nextLine();
+                    StatusMissao statusMissao = StatusMissao.converter(status);
                     gerenciadorMissoes.adicionarMissao(nomeMissao, objetivoMissao, dataLancamento, statusMissao);
                     break;
 
@@ -96,12 +98,43 @@ public class Main {
                 case 7:
                     System.out.print("ID da Missão para associar nave: ");
                     int idMissaoAssocNave = scanner.nextInt();
+                    scanner.nextLine();
                     System.out.print("ID da Nave para associar: ");
                     int idNaveAssoc = scanner.nextInt();
+                    scanner.nextLine();
                     gerenciadorMissoes.associarNaveAMissao(idMissaoAssocNave, idNaveAssoc);
                     break;
+
+                case 8:
+                    System.out.print("ID da Missão para associar astronauta: ");
+                    int idMissaoAssocAstronauta = scanner.nextInt();
+                    scanner.nextLine();
+                    System.out.print("ID do Astronauta para associar: ");
+                    int idAstronautaAssoc = scanner.nextInt();
+                    scanner.nextLine();
+                    gerenciadorMissoes.associarAstronautaAMissao(idMissaoAssocAstronauta, idAstronautaAssoc);
+
+                 break;
+
+                case 9:
+                    System.out.print("ID da Missão para atualizar status: ");
+                    int idMissaoAtualizar = scanner.nextInt();
+                    scanner.nextLine();
+
+                    System.out.print("Novo Status (Planejada, Em Andamento, Concluída, Cancelada): ");
+                    String novoStatus = scanner.nextLine();
+
+                    gerenciadorMissoes.atualizarStatusMissao(idMissaoAtualizar, novoStatus);
+
+                    break;
+
+                case 0:
+                    System.out.println("Saindo do sistema.");
+                    break;
+                default:
+                    System.out.println("Opção inválida. Tente novamente.");
             }
         }while(opcao!=0);
-
+        scanner.close();
     }
 }

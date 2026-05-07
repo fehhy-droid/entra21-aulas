@@ -38,4 +38,15 @@ public class GerenciadorAstronauta {
             );
         }
     }
+    public Astronauta buscarPorId(int id) {
+
+        for (Astronauta astronauta : astronautas) {
+
+            if (astronauta.getId() == id) {
+                return astronauta;
+            }
+        }
+
+        return null;
+    }
 }
