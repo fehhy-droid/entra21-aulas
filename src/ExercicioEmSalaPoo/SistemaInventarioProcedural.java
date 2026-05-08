@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class SistemaInventarioProcedural {
 
-    // lista precisa ser global para os métodos usarem
+
     private static List<Produto> produtos = new ArrayList<>();
 
     public static void main(String[] args) {
