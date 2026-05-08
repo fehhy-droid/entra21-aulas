@@ -106,7 +106,7 @@ public class GerenciadorMissoes {
 
             if (missao.getId() == idMissao) {
 
-                missao.setStatus(novoStatus);
+
 
                 System.out.println("Status atualizado com sucesso!");
                 return;
